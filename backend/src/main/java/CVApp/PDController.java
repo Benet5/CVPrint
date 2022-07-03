@@ -14,9 +14,9 @@ public class PDController {
     private final PDService pdService;
 
     @PostMapping
-    public ResponseEntity<Name> createName(@RequestBody Name newName){
+    public ResponseEntity<Person> createName(@RequestBody Person newName){
         return ResponseEntity.status(201)
-                .body(pdService.createName(newName));
+                .body(pdService.createPerson(newName));
     }
 
 

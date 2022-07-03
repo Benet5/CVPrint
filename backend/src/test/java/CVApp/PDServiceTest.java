@@ -1,8 +1,9 @@
 package CVApp;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.data.mongodb.core.aggregation.ArithmeticOperators;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -11,17 +12,16 @@ class PDServiceTest {
     @Test
 
     public void ShouldSaveName(){
-        NameRepo nameRepo = mock(NameRepo.class);
-        PDService pdService = new PDService(nameRepo);
+        PersonRepo personRepo = mock(PersonRepo.class);
+        PDService pdService = new PDService(personRepo);
 
-     Name newName = new Name("2D1345","Ben", "Bo");
+        Address address = new Address("Dorfstraße 1", "22179 Hamburg");
+     Person newName = new Person("2D1345","Ben", "Bo", address, "01.01.2000", "boschlo@rg.de", 012736542 );
 
-     when(nameRepo.save(newName)).thenReturn(newName);
-     var actual = pdService.createName(newName);
+     when(personRepo.save(newName)).thenReturn(newName);
+     var actual = pdService.createPerson(newName);
 
      assertEquals(actual.getFirstName(), "Ben");
-
-
 
 
     }
