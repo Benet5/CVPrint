@@ -11,14 +11,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/import")
 @RequiredArgsConstructor
 public class PDController {
-    private PDService pdService;
+    private final PDService pdService;
 
     @PostMapping
     public ResponseEntity<Name> createName(@RequestBody Name newName){
         return ResponseEntity.status(201)
                 .body(pdService.createName(newName));
     }
-
 
 
 }
