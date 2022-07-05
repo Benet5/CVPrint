@@ -2,10 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {BrowserRouter, Route} from "react-router-dom";
+import DataInput from "./DataInput";
 
 ReactDOM.render(
     <React.StrictMode>
-        <App />
+            <BrowserRouter>
+                <Route path ="/" element ={<App/>}>
+                    <Route path="/input" element = {<DataInput/>} />
+                </Route>
+            </BrowserRouter>
     </React.StrictMode>,
   document.getElementById('root')
 );
