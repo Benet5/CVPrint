@@ -2,10 +2,9 @@ package CVApp;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/import")
@@ -14,10 +13,13 @@ public class PDController {
     private final PDService pdService;
 
     @PostMapping
-    public ResponseEntity<Person> createName(@RequestBody Person newName){
+    public ResponseEntity<Person> createPerson(@RequestBody Person newName){
         return ResponseEntity.status(201)
                 .body(pdService.createPerson(newName));
     }
 
-
+@GetMapping
+    public ResponseEntity<List<Person>> getPerson(){
+        return ResponseEntity.status(200).body(pdService.getPersons());
+}
 }
